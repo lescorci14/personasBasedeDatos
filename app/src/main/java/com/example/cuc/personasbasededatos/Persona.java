@@ -1,5 +1,8 @@
 package com.example.cuc.personasbasededatos;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
 /**
  * Created by CUC on 12/05/2017.
  */
@@ -62,5 +65,24 @@ public class Persona {
 
     public void setPasatiempo(String pasatiempo) {
         this.pasatiempo = pasatiempo;
-    } 
+    }
+
+    public void guardar(Context contexto){
+        SQLiteDatabase db;
+        String sql;
+
+        PersonasSQLiteOpenHelper aux = new PersonasSQLiteOpenHelper(contexto, "DBPersonas",null,2);
+        db = aux.getWritableDatabase();
+
+        sql = "INSERT INTO Personas values('"+this.getFoto()+"','"
+                +this.getCedula()+"','"
+                +this.getNombre()+"','"
+                +this.getApellido()+"','"
+                +this.getSexo()+"','"
+                +this.getPasatiempo()+"')";
+
+        db.execSQL(sql);
+
+        db.close();
+    }
 }

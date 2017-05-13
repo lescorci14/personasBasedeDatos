@@ -137,7 +137,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/cmdGuardar"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:onClick="guardar" />
 
                 <Button
                     android:text="@string/modificar"
